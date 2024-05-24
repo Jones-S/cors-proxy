@@ -3,15 +3,23 @@ require "vendor/autoload.php";
 $client = new GuzzleHttp\Client();
 
 header("Content-Type: application/json; charset=utf-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST");
+header("Access-Control-Allow-Headers: Content-Type");
 
-$method = $_POST["method"] ?? null;
+$method = $_POST["method"] ?? "GET";
 $url = $_POST["endpoint"] ?? null;
-$auth = $_POST["auth"] ?? null;
+$auth = $_POST["auth"] ?? "";
 
-if (empty($method) || empty($url)) {
+if (empty($url)) {
   echo json_encode([
     "status" => 400,
-    "message" => "Both method and endpoint are required",
+    "message" => "Endpoint is required",
+    "request" => json_encode([
+      "method" => $method,
+      "endpoint" => $url,
+      "auth" => $auth,
+    ]),
   ]);
   exit();
 }
