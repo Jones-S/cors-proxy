@@ -1,0 +1,17 @@
+meta {
+  name: Cors Proxy
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://cors-proxy.ddev.site/
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  method: GET
+  endpoint: https%3A%2F%2Fapi.track.toggl.com%2Fapi%2Fv9%2Fme
+  auth: 4863d854fb2b929b59cce596522ad82f
+}
