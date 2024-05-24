@@ -1,0 +1,5 @@
+{
+  "editorconfig": true,
+  "parser": "php",
+  "plugins": ["@prettier/plugin-php"]
+}

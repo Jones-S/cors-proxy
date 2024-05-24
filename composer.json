@@ -1,0 +1,13 @@
+{
+    "name": "jones-s/cors-proxy",
+    "description": "Circumvent CORS issues by creating a proxy and sending API url and params to it.",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "JonesS\\CorsProxy\\": "src/"
+        }
+    }
+}
