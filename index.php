@@ -13,7 +13,7 @@ $whitelist =
     ? []
     : [
       // Exact matching
-      ["http://www.yr.no/place/Sweden/Stockholm/Stockholm/forecast.xml"],
+      // ["http://www.yr.no/place/Sweden/Stockholm/Stockholm/forecast.xml"],
 
       // URL component matching
       ["host" => "localhost"],
@@ -32,6 +32,13 @@ $headers = array_change_key_case(getallheaders());
 $method = $_SERVER["REQUEST_METHOD"] ?? "GET";
 $url = $headers["go-to-url"] ?? null;
 $cookie = $headers["x-proxy-cookie"] ?? null;
+
+$authorization =
+  $headers["authorization"] ?? ($_SERVER["HTTP_AUTHORIZATION"] ?? null);
+
+if ($authorization) {
+  $headers["Authorization"] = $authorization;
+}
 
 // Check that we have a URL
 if (!$url) {
